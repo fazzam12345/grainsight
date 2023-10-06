@@ -19,7 +19,7 @@ device = torch.device(
         else "mps" if torch.backends.mps.is_available() 
         else "cpu"
     )
-model = YOLO('C:\\Users\\Fares\\Zircon detection and morphology\\FastSAM\\weights\\FastSAM-x.pt')
+model = YOLO('FastSAM-x.pt')
 
 annotations = []
 
