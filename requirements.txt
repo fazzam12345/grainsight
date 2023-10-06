@@ -13,4 +13,4 @@ streamlit
 ultralytics == 8.0.120
 streamlit-drawable-canvas
 clip
-
+ultralytics.yolo
