@@ -1,0 +1,40 @@
+ERROR:root:An error occurred: name 'model' is not defined
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: segment_everything() got an unexpected keyword argument 'model'
+ERROR:root:An error occurred: Cannot hash argument 'model' (of type `ultralytics.models.yolo.model.YOLO`) in 'segment_everything'.
+
+To address this, you can tell Streamlit not to hash this argument by adding a
+leading underscore to the argument's name in the function signature:
+
+```
+@st.cache_data
+def segment_everything(_model, ...):
+    ...
+```
+            
+ERROR:root:An error occurred: Cannot hash argument 'model' (of type `ultralytics.models.yolo.model.YOLO`) in 'segment_everything'.
+
+To address this, you can tell Streamlit not to hash this argument by adding a
+leading underscore to the argument's name in the function signature:
+
+```
+@st.cache_resource
+def segment_everything(_model, ...):
+    ...
+```
+            
+ERROR:root:An error occurred: Cannot hash argument 'annotations' (of type `torch.Tensor`) in 'fast_process'.
+
+To address this, you can tell Streamlit not to hash this argument by adding a
+leading underscore to the argument's name in the function signature:
+
+```
+@st.cache_resource
+def fast_process(_annotations, ...):
+    ...
+```
+            

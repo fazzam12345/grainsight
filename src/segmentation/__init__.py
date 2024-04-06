@@ -1,0 +1,1 @@
+from .segment import segment_everything, fast_process
