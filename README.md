@@ -7,7 +7,6 @@ GrainSight is a user-friendly application designed for petrographers and microsc
 - **Automated Grain Segmentation**: GrainSight eliminates the need for manual grain boundary tracing, saving significant time and effort.
 - **Quantitative Analysis**: Extract object-specific parameters such as area, perimeter, roundness, aspect ratio, and longest length, enabling quantitative analysis of grain characteristics.
 - **Mineral Identification and Classification**: The extracted parameters can assist in mineral identification and classification based on their morphological properties.
-- **Porosity and Permeability Estimation**: Grain size and shape analysis can provide insights into the porosity and permeability of rock samples.
 - **Textural Analysis**: Grain size distribution and spatial arrangement of grains can be studied to understand the depositional and diagenetic history of rocks.
 
 ## Installation and Usage:
@@ -35,7 +34,13 @@ grainsight_env\Scripts\activate  # On Windows
 conda activate grainsight_env
 ```
 
-3. Install Requirements:
+3. Clone the GrainSight Repository:
+
+```bash
+git clone https://github.com/fazzam12345/grainsight.git
+```     
+
+4. Install Requirements:
 
 Install the required libraries from the requirements.txt file:
 
@@ -43,17 +48,7 @@ Install the required libraries from the requirements.txt file:
 pip install -r requirements.txt
 ```
 
-4. Download the FastSAM Model:
-
-Download the appropriate FastSAM model weights file (e.g., fastsam-x.pt) from the Ultralytics GitHub repository or other sources.
-
-Place the model file in a directory accessible by your application (e.g., a models folder within your project).
-
-5. Update Configuration:
-
-Open the config.yaml file and update the model_path to point to the location of your downloaded FastSAM model file.
-
-6. Run the Application:
+5. Run the Application:
 
 Start the Streamlit application:
 
@@ -78,4 +73,3 @@ This will open the GrainSight application in your web browser.
 - **GPU Acceleration**: For faster processing, you can use a CUDA-enabled GPU with the appropriate drivers and PyTorch version.
 - **Customization**: The code is modular and can be easily extended or customized to suit your specific needs.
 
-We hope GrainSight empowers your petrographic research and analysis!
