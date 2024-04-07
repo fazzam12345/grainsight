@@ -23,7 +23,7 @@ python3 -m venv grainsight_env
 conda create -n grainsight_env python=3.8  # Replace 3.8 with your desired Python version
 ```
 
-2. Activate the Virtual Environment:
+### 2. Activate the Virtual Environment:
 
 ```bash
 # For venv
@@ -34,13 +34,13 @@ grainsight_env\Scripts\activate  # On Windows
 conda activate grainsight_env
 ```
 
-3. Clone the GrainSight Repository:
+### 3. Clone the GrainSight Repository:
 
 ```bash
 git clone https://github.com/fazzam12345/grainsight.git
 ```     
 
-4. Install Requirements:
+### 4. Install Requirements:
 
 Install the required libraries from the requirements.txt file:
 
@@ -48,7 +48,7 @@ Install the required libraries from the requirements.txt file:
 pip install -r requirements.txt
 ```
 
-5. Run the Application:
+### 5. Run the Application:
 
 Start the Streamlit application:
 
