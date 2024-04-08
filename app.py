@@ -6,13 +6,15 @@ from src.segmentation import segment_everything
 from src.utils import calculate_parameters, plot_distribution, calculate_pixel_length
 from ultralytics import YOLO
 import torch
+import cv2
 
 logging.basicConfig(filename="grainsight.log", level=logging.INFO)
 
-model_path= "C:\\Users\\fares\\Documents\\GitHub\\Grainsight\\GrainSight\\src\\model\\FastSAM-x.pt"  
+model_path= "src\\model\\FastSAM-x.pt"  
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = YOLO(model_path)
+
 
 def main():
     """Main application logic."""
@@ -88,3 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

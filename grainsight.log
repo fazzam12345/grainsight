@@ -38,3 +38,5 @@ def fast_process(_annotations, ...):
     ...
 ```
             
+ERROR:root:An error occurred: tuple index out of range
+ERROR:root:An error occurred: drawable_canvas() missing 2 required positional arguments: 'annotations' and 'update_segmentation_results'
