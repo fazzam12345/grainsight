@@ -9,7 +9,7 @@ import torch
 
 logging.basicConfig(filename="grainsight.log", level=logging.INFO)
 
-model_path= "C:\\Users\\fares\\Documents\\GitHub\\Grainsight\\GrainSight\\src\\model\\FastSAM-x.pt"  
+model_path= "src\\model\\FastSAM-x.pt"  
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = YOLO(model_path)
