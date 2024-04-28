@@ -3,10 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from PIL import Image
-import streamlit as st
 
 
-def segment_everything(_input, model, device, input_size=1024, iou_threshold=0.7, conf_threshold=0.25, better_quality=False, contour_thickness=1):
+def segment_everything(_input, model, device, input_size=1024, iou_threshold=0.7, conf_threshold=0.25, better_quality=False, contour_thickness=1, max_det = 500):
     """
     Performs segmentation on the input image and returns the segmented image and annotations.
     """
@@ -23,7 +22,8 @@ def segment_everything(_input, model, device, input_size=1024, iou_threshold=0.7
                    retina_masks=True,                    
                    iou=iou_threshold,                    
                    conf=conf_threshold,                    
-                   imgsz=input_size)
+                   imgsz=input_size,
+                   max_det=max_det)
 
     annotations = results[0].masks.data
     segmented_image = fast_process(annotations=annotations,                       
@@ -88,40 +88,33 @@ def fast_process(annotations,
         for i, mask in enumerate(annotations):
             if type(mask) == dict:
                 mask = mask['segmentation']
-            # Convert to uint8
             annotation = mask.astype(np.uint8)
             # Perform morphological operations for separating connected objects and smoothing contours
             kernel = np.ones((5, 5), np.uint8)
             annotation = cv2.morphologyEx(annotation, cv2.MORPH_OPEN, kernel)
-            annotation = cv2.GaussianBlur(annotation, (5, 5), 0)  # Gaussian blur
+            annotation = cv2.GaussianBlur(annotation, (5, 5), 0)  
             # Find contours
             contours, _ = cv2.findContours(annotation, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            # Add contour approximation here
             for contour in contours:
                 hull = cv2.convexHull(contour)
                 epsilon = 0.005 * cv2.arcLength(contour, True)
                 approx = cv2.approxPolyDP(contour, epsilon, True)
-                contour_all.append(approx)  # Append the approximated contour
-        # New code to display object indices
+                contour_all.append(approx) 
         for i, contour in enumerate(contour_all):
-            # Calculate the centroid of the object to place the index text
             M = cv2.moments(contour)
             if M["m00"] != 0:
                 cX = int(M["m10"] / M["m00"])
                 cY = int(M["m01"] / M["m00"])
             else:
                 cX, cY = 0, 0
-            # Put the index at the centroid of the object
             cv2.putText(temp, str(i), (cX, cY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 125, 255), 2)
-        # Increase contour thickness (you can also make this a variable)
         cv2.drawContours(temp, contour_all, -1, (255, 255, 255), contour_thickness)
-        # Change the color here (this example sets it to red)
         color = np.array([255 / 255, 0 / 255, 0 / 255, 1])  # RGBA
         contour_mask = temp / 255 * color.reshape(1, 1, -1)
     image = image.convert('RGBA')
     overlay_inner = Image.fromarray((inner_mask * 255).astype(np.uint8), 'RGBA')
     image.paste(overlay_inner, (0, 0), overlay_inner)
-    if withContours:  # Make sure contour_mask is defined when this block is executed
+    if withContours:  
         overlay_contour = Image.fromarray((contour_mask * 255).astype(np.uint8), 'RGBA')
         image.paste(overlay_contour, (0, 0), overlay_contour)
     return image

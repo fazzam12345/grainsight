@@ -8,7 +8,7 @@ def streamlit_ui():
     uploaded_image = st.sidebar.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
 
     input_size = st.sidebar.slider(
-        "Input Size", 512, 1024, 1024, 64,
+        "Input Size", 512, 3000, 1024, 64,
         help="Size of the input image. Higher values may improve detection but will be slower."
     )
 
@@ -18,7 +18,7 @@ def streamlit_ui():
     )
 
     conf_threshold = st.sidebar.slider(
-        "Confidence Threshold", 0.0, 0.9, 0.5, 0.05, 
+        "Confidence Threshold", 0.0, 0.9, 0.5, 0.01, 
         help="Minimum confidence level for detected objects. Lower values may detect more objects but increase false positives."
     )
 
@@ -37,5 +37,10 @@ def streamlit_ui():
         min_value=1, value=100,
         help="Length of the reference line in the real world, used for scaling object parameters."
     )
-
-    return uploaded_image, input_size, iou_threshold, conf_threshold, better_quality, contour_thickness, real_world_length
+    
+    max_det = st.sidebar.number_input(
+        "Maximum Number of Detected Objects", 
+        min_value=1, value=500,
+        help="Maximum number of detected objects. Higher values may have significant impact on performance."
+    )
+    return uploaded_image, input_size, iou_threshold, conf_threshold, better_quality, contour_thickness, real_world_length, max_det
