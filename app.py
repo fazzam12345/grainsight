@@ -11,22 +11,19 @@ import os
 
 @st.cache(hash_funcs={YOLO: lambda _: None})
 def load_model_and_initialize():
-    # Retrieve model URL from GitHub Secrets
-    model_url = os.environ.get("model_url")
-
-    # Check if model URL is retrieved properly
-    if model_url is None:
-        st.error("Failed to retrieve MODEL_URL environment variable.")
-        return None, None
-    else:
-        st.write(f"Retrieved model URL: {model_url}")
-
-    model_path = "FastSAM-x.pt"  # Update the path to where you want to save the model
+    storage_account = "grainsightmodeldeploy"
+    container = "models"
+    blob = "FastSAM-x.pt"
+    sas_token = "sp=r&st=2024-06-10T17:47:04Z&se=2024-06-11T01:47:04Z&spr=https&sv=2022-11-02&sr=c&sig=0y%2B7anAW9SjmDVE2PqevqkCQjePgUr43lB2bvaGheRU%3D"  # Replace with your SAS token
+    model_path= "../GrainSight/src/FastSAM-x.pt"
     try:
         # Check if model file already exists
         if not os.path.exists(model_path):
-            # Download model file from the model URL
-            response = requests.get(model_url)
+            # Construct URL with SAS token
+            model_url_with_sas = f"https://{storage_account}.blob.core.windows.net/{container}/{blob}?{sas_token}"
+
+            # Download model file from Azure Blob Storage
+            response = requests.get(model_url_with_sas)
             if response.status_code == 200:
                 with open(model_path, "wb") as f:
                     f.write(response.content)
@@ -43,8 +40,6 @@ def load_model_and_initialize():
     except Exception as e:
         st.error(f"An error occurred during model initialization: {e}")
         return None, None
-
-
 
 
 def main():
