@@ -14,8 +14,12 @@ def load_model_and_initialize():
     # Retrieve model URL from GitHub Secrets
     model_url = os.environ.get("MODEL_URL")
 
-    # Debugging: Print out the retrieved model URL
-    st.write(f"Retrieved model URL: {model_url}")
+    # Check if model URL is retrieved properly
+    if model_url is None:
+        st.error("Failed to retrieve MODEL_URL environment variable.")
+        return None, None
+    else:
+        st.write(f"Retrieved model URL: {model_url}")
 
     model_path = "FastSAM-x.pt"  # Update the path to where you want to save the model
     try:
@@ -39,6 +43,7 @@ def load_model_and_initialize():
     except Exception as e:
         st.error(f"An error occurred during model initialization: {e}")
         return None, None
+
 
 
 
