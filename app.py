@@ -15,7 +15,7 @@ def load_model_and_initialize():
     container = "models"
     blob = "FastSAM-x.pt"
     sas_token = "sp=r&st=2024-06-10T17:47:04Z&se=2024-06-11T01:47:04Z&spr=https&sv=2022-11-02&sr=c&sig=0y%2B7anAW9SjmDVE2PqevqkCQjePgUr43lB2bvaGheRU%3D"  # Replace with your SAS token
-    model_path= "../GrainSight/src/FastSAM-x.pt"
+    model_path= "FastSAM-x.pt"
     try:
         # Check if model file already exists
         if not os.path.exists(model_path):
