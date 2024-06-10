@@ -12,9 +12,9 @@ import os
 @st.cache(hash_funcs={YOLO: lambda _: None})
 def load_model_and_initialize():
     # Retrieve model URL from GitHub Secrets
-    model_url = os.environ.get("model_url")
+    model_url = os.environ.get("MODEL_URL")
 
-    model_path = "../GrainSight/src/FastSAM-x.pt"
+    model_path = "FastSAM-x.pt"  # Update the path to where you want to save the model
     try:
         # Check if model file already exists
         if not os.path.exists(model_path):
@@ -125,7 +125,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-    
-    
