@@ -12,7 +12,7 @@ import os
 @st.cache(hash_funcs={YOLO: lambda _: None})
 def load_model_and_initialize():
     # Retrieve model URL from GitHub Secrets
-    model_url = os.environ.get("MODEL_URL")
+    model_url = os.environ.get("model_url")
 
     # Check if model URL is retrieved properly
     if model_url is None:
