@@ -142,7 +142,7 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
+.vscode
 # Pyre type checker
 .pyre/
 
@@ -151,6 +151,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+__pycache__
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

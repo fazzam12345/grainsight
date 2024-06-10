@@ -1,16 +1,16 @@
-matplotlib>=3.2.2
-opencv-python>=4.6.0
-Pillow>=7.1.2
-PyYAML>=5.3.1
-requests>=2.23.0
-scipy>=1.4.1
-torch>=1.7.0
-torchvision>=0.8.1
-tqdm>=4.64.0
-pandas>=1.1.4
-seaborn>=0.11.0
-streamlit == 1.24.0
-ultralytics == 8.0.120
-streamlit-drawable-canvas
+matplotlib==3.8.4
+opencv-python==4.9.0.80
+Pillow==9.5.0
+PyYAML==6.0.1
+requests==2.31.0
+scipy==1.13.0
+torch==2.2.2
+torchvision==0.17.2
+tqdm==4.66.2
+pandas==2.2.2
+seaborn
+streamlit==1.24.0
+ultralytics==8.0.120
+streamlit-drawable-canvas==0.9.3
 clip
-ultralytics.yolo
+ultralytics-yolo==0.0.1

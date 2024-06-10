@@ -20,6 +20,8 @@ def load_model_and_initialize():
     model = YOLO(model_path)
     return model, device
 
+
+
 def main():
     """Main application logic."""
     uploaded_image, input_size, iou_threshold, conf_threshold, better_quality, contour_thickness, real_world_length, max_det = streamlit_ui()
