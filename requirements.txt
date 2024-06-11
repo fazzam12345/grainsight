@@ -8,9 +8,9 @@ torch==2.2.2
 torchvision==0.17.2
 tqdm==4.66.2
 pandas==2.2.2
-seaborn
+seaborn===0.13.2
 streamlit==1.24.0
 ultralytics==8.0.120
 streamlit-drawable-canvas==0.9.3
-clip
+clip==0.2.0
 ultralytics-yolo==0.0.1

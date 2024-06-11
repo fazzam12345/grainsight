@@ -16,7 +16,7 @@ def calculate_parameters(annotations, scale_factor):
             # Find contours with all points (no approximation)
             contours, _ = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-            if contours:  # Check if any contours were found
+            if contours:  
                 perimeter_pixel = cv2.arcLength(contours[0], True)
                 perimeter_micron = perimeter_pixel * scale_factor
 
