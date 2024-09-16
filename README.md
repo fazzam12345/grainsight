@@ -2,6 +2,9 @@
 
 GrainSight is a user-friendly application designed for petrographers and microscopists to perform real-time grain segmentation and analysis on microscopic thin section images. Built on top of the powerful FastSAM segmentation model, GrainSight allows you to extract quantitative data and insights from your images, aiding in various petrographic studies.
 
+![Picture1](https://github.com/user-attachments/assets/36aa849c-1b3e-4183-80cd-b4989763e392)
+
+
 ## Importance in Petrographic Studies:
 
 - **Automated Grain Segmentation**: GrainSight eliminates the need for manual grain boundary tracing, saving significant time and effort.
