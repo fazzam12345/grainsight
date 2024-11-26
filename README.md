@@ -1,3 +1,6 @@
+⚠️ Important Notice:
+The web application is no longer receiving updates. However, a desktop version of the app is now available at Grainsight on [data.gouv.fr](https://www.data.gouv.fr/fr/datasets/grainsight/). The desktop version will continue to be actively maintained and updated. 
+
 # GrainSight: README
 
 GrainSight is a user-friendly application designed for petrographers and microscopists to perform real-time grain segmentation and analysis on microscopic thin section images. Built on top of the powerful FastSAM segmentation model, GrainSight allows you to extract quantitative data and insights from your images, aiding in various petrographic studies.
